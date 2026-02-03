@@ -3,7 +3,7 @@ create table if not exists usuarios (
   nombre_usuario VARCHAR(50) NOT NULL UNIQUE,
   contrasena VARCHAR(255) NOT NULL,
   correo VARCHAR(150) NOT NULL UNIQUE,
-  creacion date,
+  creacion date
 );
 CREATE TABLE empleados (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -21,7 +21,7 @@ CREATE TABLE noticias ( id INT AUTO_INCREMENT PRIMARY KEY,
   titulo VARCHAR(255) not null,
   contenido TEXT not null,
   fecha date,
-  tipo enum('F1', 'MotoGP', 'IndyCar', 'NASCAR', 'WRC', 'DTM') not null,);
+  tipo enum('F1', 'MotoGP', 'IndyCar', 'NASCAR', 'WRC', 'DTM') not null);
 
 INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('javier', 'usuario@1','javier@gmail.com', 'Coloma', 'Javier', 25, 'contable');
 INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('carmen', 'usuario@1','carmen@gmail.com', 'Oviedo', 'Carmen', 34, 'administrativo');
