@@ -5,28 +5,27 @@ create table if not exists usuarios (
   correo VARCHAR(150) NOT NULL UNIQUE,
   creacion date
 );
-CREATE TABLE empleados (
-  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  nombre_usuario VARCHAR(50) NOT NULL UNIQUE,
-  contrasena VARCHAR(255) NOT NULL,
-  correo VARCHAR(150) NOT NULL UNIQUE,
-  apellido VARCHAR(100),
-  nombre VARCHAR(100),
-  edad INT UNSIGNED,
-  puesto ENUM('usuario', 'empleado', 'administrativo', 'contable', 'dependiente', 'gerente', 'repartidor') NOT NULL DEFAULT 'usuario',
-  creacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+create table if not exists clasificacion (
+  piloto_id int AUTO_INCREMENT primary key not null,
+  nombre VARCHAR(100) not null,
+  apellido VARCHAR(100) not null,
+  dorsal int(2) not null,
+  puntos int not null,
+  escuderia varchar(100) not null,
+  nacionalidad varchar(100) not null
+);
 
-CREATE TABLE noticias ( id INT AUTO_INCREMENT PRIMARY KEY, 
-  titulo VARCHAR(255) not null,
-  contenido TEXT not null,
-  fecha date,
-  tipo enum('F1', 'MotoGP', 'IndyCar', 'NASCAR', 'WRC', 'DTM') not null);
+INSERT INTO clasificacion (nombre, apellido, dorsal, puntos, escuderia, nacionalidad) VALUES 
+('Lando', 'Norris', 4, 423, 'McLaren', 'Reino Unido'),
+('Max', 'Verstappen', 1, 421, 'Red Bull Racing', 'Países Bajos'),
+('Oscar', 'Piastri', 81, 410, 'McLaren', 'Australia'),
+('George', 'Russell', 63, 319, 'Mercedes', 'Reino Unido'),
+('Charles', 'Leclerc', 16, 242, 'Ferrari', 'Mónaco'),
+('Lewis', 'Hamilton', 44,  156, 'Ferrari', 'Reino Unido'),
+('Kimi', 'Antonelli', 12, 150, 'Mercedes', 'Italia'),
+('Alexander', 'Albon', 23, 73, 'Williams', 'Tailandia'),
+('Carlos', 'Sainz', 55, 64, 'Williams', 'España'),
+('Fernando', 'Alonso', 14, 56, 'Aston Martin', 'España');
 
-INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('javier', 'usuario@1','javier@gmail.com', 'Coloma', 'Javier', 25, 'contable');
-INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('carmen', 'usuario@1','carmen@gmail.com', 'Oviedo', 'Carmen', 34, 'administrativo');
-INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('pascual', 'usuario@1','pascual@gmail.com', 'Vargas', 'Pascual', 19, 'dependiente');
-INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('maria', 'usuario@1','maria@gmail.com', 'Donoso', 'Maria', 45, 'gerente');
-INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('manuel', 'usuario@1','manuel@gmail.com', 'Celis', 'Manuel', 56, 'dependiente');
-INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('jana', 'usuario@1','jana@gmail.com','Palencia', 'Jana', 31, 'dependiente');
-INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('pedro', 'usuario@1','pedro@gmail.com', 'Zamanillo', 'Pedro', 63,'repartidor');
+INSERT INTO usuarios (nombre_usuario, contrasena, correo, creacion) VALUES 
+('admin', 'admin123', 'admin@f1.com', '2026-02-02');

@@ -1,83 +1,26 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
-?>
+<?php include('config.php'); if(!isset($_SESSION['user'])) header("Location: index.php"); ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Altas</title>
-</head>
+<html>
+<head><link rel="stylesheet" href="styles.css"><title>Admin F1</title></head>
 <body>
-<div>
-	<header>
-		<h1>APLICACION CRUD PHP</h1>
-	</header>
-	<main>				
-	<h2>Alta</h2>
-<!--FORMULARIO DE ALTA. Al hacer click en el botón Agregar, llama a la página: add.php (form action="add.php")
-La página: add.php se encargará de proceder a la inserción del registro en la tabla de empleados
--->
-
-	<form action="add_action.php" method="post">
-		<div>
-			<label for="email">Correo</label>
-			<input type="email" name="email" id="email" placeholder="correo electrónico" required>
-		</div>
-		<div>
-			<label for="username">Usuario</label>
-			<input type="text" name="username" id="username" placeholder="nombre usuario" required>
-		</div>
-		<div>
-			<label for="name">Contraseña</label>
-			<input type="password" name="password" id="password" placeholder="contraseña" required>
-		</div>
-		<div>
-			<label for="name">Nombre</label>
-			<input type="text" name="name" id="name" placeholder="nombre">
-		</div>
-
-		<div>
-			<label for="surname">Apellido</label>
-			<input type="text" name="surname" id="surname" placeholder="apellido">
-		</div>
-
-		<div>
-			<label for="age">Edad</label>
-			<input type="number" name="age" id="age" placeholder="edad">
-		</div>
-
-		<div>
-			<label for="job">Puesto</label>
-			<select name="job" id="job" placeholder="puesto">
-				<option value="" disabled selected>Seleccione un puesto</option>
-				<option value="administrativo">administrativo</option>
-				<option value="contable">contable</option>
-				<option value="dependiente">dependiente</option>
-				<option value="empleado">empleado</option>
-				<option value="gerente">gerente</option>
-				<option value="repartidor">repartidor</option>
-				<option value="repartidor">usuario</option>
-			</select>	
-		</div>
-
-		<div>
-			<button type="submit" name="inserta" value="si">Aceptar</button>
-			<button type="button" onclick="location.href='home.php'">Cancelar</button>
-		</div>
-	</form>
-	
-	</main>	
-	<footer>
-		<p><a href="home.php">Volver</a></p>	
-		<p><a href="logout.php">Cerrar sesión (Sign out) <?php echo $_SESSION['username']; ?></a></p>
-		Created by the IES Miguel Herrero team &copy; 2026
-  	</footer>
-</div>
+    <h1>Panel de Control - F1 2025</h1>
+    <p>Bienvenido, <?php echo $_SESSION['user']; ?> | <a href="logout.php">Salir</a></p>
+    <a href="add.php" class="btn">Añadir Piloto</a>
+    <table>
+        <tr><th>Piloto</th><th>Puntos</th><th>Acciones</th></tr>
+        <?php
+        $res = $conn->query("SELECT * FROM clasificacion ORDER BY puntos DESC");
+        while($f = $res->fetch_assoc()) {
+            echo "<tr>
+                <td>{$f['nombre']} {$f['apellidos']}</td>
+                <td>{$f['puntos']}</td>
+                <td>
+                    <a href='edit.php?id={$f['piloto_id']}' class='btn'>Editar</a>
+                    <a href='delete.php?id={$f['piloto_id']}' class='btn btn-del'>Eliminar</a>
+                </td>
+            </tr>";
+        }
+        ?>
+    </table>
 </body>
 </html>

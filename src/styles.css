@@ -1,0 +1,7 @@
+body { font-family: sans-serif; background: #15151e; color: white; text-align: center; }
+table { margin: 20px auto; border-collapse: collapse; width: 90%; background: #1f1f27; }
+th, td { padding: 10px; border: 1px solid #38383f; }
+th { background: #e10600; }
+input, select { padding: 8px; margin: 5px; }
+.btn { display: inline-block; padding: 8px 15px; background: #e10600; color: white; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; }
+.btn-del { background: #38383f; }

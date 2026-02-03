@@ -1,43 +1,16 @@
-<?php
-/*Incluye parámetros de conexión a la base de datos: 
-DB_HOST: Nombre o dirección del gestor de BD MariaDB
-DB_NAME: Nombre de la BD
-DB_USER: Usuario de la BD
-DB_PASSWORD: Contraseña del usuario de la BD
-*/
-include_once("config.php");
-?>
-
+<?php include('config.php'); ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>CRUD PHP</title>
-</head>
+<head><link rel="stylesheet" href="styles.css"><title>F1 2025</title></head>
 <body>
-<div>
-	<header>
-		<h1>APLICACION CRUD VANILLA PHP</h1>
-	</header>
-
-	<main>
-	
-	<?php
-	session_start();
-	//Si el usuario ya ha iniciado sesión se le redirige a la página home.php
-	if (isset($_SESSION['username'])) {
-		header("Location: home.php");
-		exit();
-	}
-	?>
-	<p><a href="login.php">Iniciar sesión (Sign in)</a></p>
-	<p><a href="registro.php">Registrarse (Sign up)</a></p>
-
-	</main>
-	<footer>
-    	Created by the IES Miguel Herrero team &copy; 2026
-  	</footer>
-</div>
+    <h1>Clasificación F1 2025</h1>
+    <a href="login.php" class="btn">Login</a> <a href="registro.php" class="btn">Registro</a>
+    <table>
+        <tr><th>Piloto</th><th>Dorsal</th><th>Escudería</th><th>Puntos</th></tr>
+        <?php
+        $res = $conn->query("SELECT * FROM clasificacion ORDER BY puntos DESC");
+        while($f = $res->fetch_assoc()) echo "<tr><td>{$f['nombre']} {$f['apellidos']}</td><td>{$f['dorsal']}</td><td>{$f['escuderia']}</td><td>{$f['puntos']}</td></tr>";
+        ?>
+    </table>
 </body>
 </html>
