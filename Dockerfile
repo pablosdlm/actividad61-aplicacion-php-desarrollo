@@ -13,9 +13,9 @@ ENV TZ=Europe/Madrid
 
 # En este caso le asignamos unos valores por defecto a la aplicación CRUD PHP: "mariadb", "electroshop", "usuario", "usuario@1"
 ENV MARIADB_HOST=mariadb
-ENV MARIADB_DATABASE=Genios
-ENV MARIADB_USER=usuarioAsRo
-ENV MARIADB_PASSWORD=AsierRodriguez@2005
+ENV MARIADB_DATABASE=motorsport
+ENV MARIADB_USER=usuarioPaSa
+ENV MARIADB_PASSWORD=PabloSainz@2006
 
 # RUN: Permite definir los comandos que se van a ejecutar SOBRE LA IMAGEN BASE. En este caso: ubuntu:24.04
 # Actualización e instalación de apache y  todos las paquetes necesarios para ejecutar PHP y conectar a MARIADB.
