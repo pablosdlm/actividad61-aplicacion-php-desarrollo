@@ -17,6 +17,12 @@ CREATE TABLE empleados (
   creacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE noticias ( id INT AUTO_INCREMENT PRIMARY KEY, 
+  titulo VARCHAR(255) not null,
+  contenido TEXT not null,
+  fecha date,
+  tipo enum('F1', 'MotoGP', 'IndyCar', 'NASCAR', 'WRC', 'DTM') not null,);
+
 INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('javier', 'usuario@1','javier@gmail.com', 'Coloma', 'Javier', 25, 'contable');
 INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('carmen', 'usuario@1','carmen@gmail.com', 'Oviedo', 'Carmen', 34, 'administrativo');
 INSERT INTO empleados (nombre_usuario, contrasena, correo, apellido, nombre, edad, puesto) VALUES('pascual', 'usuario@1','pascual@gmail.com', 'Vargas', 'Pascual', 19, 'dependiente');
