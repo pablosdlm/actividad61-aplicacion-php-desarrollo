@@ -1,26 +1,27 @@
-<?php include('config.php'); if(!isset($_SESSION['user'])) header("Location: index.php"); ?>
-<!DOCTYPE html>
-<html>
-<head><link rel="stylesheet" href="styles.css"><title>Admin F1</title></head>
-<body>
-    <h1>Panel de Control - F1 2025</h1>
-    <p>Bienvenido, <?php echo $_SESSION['user']; ?> | <a href="logout.php">Salir</a></p>
-    <a href="add.php" class="btn">Añadir Piloto</a>
-    <table>
-        <tr><th>Piloto</th><th>Puntos</th><th>Acciones</th></tr>
-        <?php
-        $res = $conn->query("SELECT * FROM clasificacion ORDER BY puntos DESC");
-        while($f = $res->fetch_assoc()) {
-            echo "<tr>
-                <td>{$f['nombre']} {$f['apellidos']}</td>
-                <td>{$f['puntos']}</td>
-                <td>
-                    <a href='edit.php?id={$f['piloto_id']}' class='btn'>Editar</a>
-                    <a href='delete.php?id={$f['piloto_id']}' class='btn btn-del'>Eliminar</a>
-                </td>
-            </tr>";
-        }
-        ?>
-    </table>
-</body>
-</html>
+<?php
+require 'config.php';
+require_login();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nombre = trim($_POST['nombre'] ?? '');
+    $apellidos = trim($_POST['apellidos'] ?? '');
+    $dorsal = (int)($_POST['dorsal'] ?? 0);
+    $puntos = (int)($_POST['puntos'] ?? 0);
+    $escuderia = trim($_POST['escuderia'] ?? '');
+    $nacionalidad = trim($_POST['nacionalidad'] ?? '');
+
+    if ($nombre === '' || $apellidos === '' || $dorsal <= 0 || $escuderia === '' || $nacionalidad === '') {
+        header('Location: add.php');
+        exit;
+    }
+
+    $stmt = $pdo->prepare('INSERT INTO clasificacion (nombre, apellidos, dorsal, puntos, escuderia, nacionalidad)
+                           VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->execute([$nombre, $apellidos, $dorsal, $puntos, $escuderia, $nacionalidad]);
+
+    header('Location: home.php');
+    exit;
+} else {
+    header('Location: add.php');
+    exit;
+}

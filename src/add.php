@@ -1,26 +1,33 @@
-<?php include('config.php'); if(!isset($_SESSION['user'])) header("Location: index.php"); ?>
+<?php
+require 'config.php';
+require_login();
+?>
 <!DOCTYPE html>
-<html>
-<head><link rel="stylesheet" href="styles.css"><title>Admin F1</title></head>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir piloto - F1 2025</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-    <h1>Panel de Control - F1 2025</h1>
-    <p>Bienvenido, <?php echo $_SESSION['user']; ?> | <a href="logout.php">Salir</a></p>
-    <a href="add.php" class="btn">Añadir Piloto</a>
-    <table>
-        <tr><th>Piloto</th><th>Puntos</th><th>Acciones</th></tr>
-        <?php
-        $res = $conn->query("SELECT * FROM clasificacion ORDER BY puntos DESC");
-        while($f = $res->fetch_assoc()) {
-            echo "<tr>
-                <td>{$f['nombre']} {$f['apellidos']}</td>
-                <td>{$f['puntos']}</td>
-                <td>
-                    <a href='edit.php?id={$f['piloto_id']}' class='btn'>Editar</a>
-                    <a href='delete.php?id={$f['piloto_id']}' class='btn btn-del'>Eliminar</a>
-                </td>
-            </tr>";
-        }
-        ?>
-    </table>
+<div class="container">
+    <h1>Añadir piloto</h1>
+    <form action="add_action.php" method="post">
+        <label>Nombre</label>
+        <input type="text" name="nombre" required>
+        <label>Apellidos</label>
+        <input type="text" name="apellidos" required>
+        <label>Dorsal</label>
+        <input type="number" name="dorsal" required>
+        <label>Puntos</label>
+        <input type="number" name="puntos" value="0" required>
+        <label>Escudería</label>
+        <input type="text" name="escuderia" required>
+        <label>Nacionalidad</label>
+        <input type="text" name="nacionalidad" required>
+        <button type="submit">Guardar</button>
+        <a class="btn" href="home.php">Volver</a>
+    </form>
+</div>
 </body>
 </html>

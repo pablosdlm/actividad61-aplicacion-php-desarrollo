@@ -1,3 +1,4 @@
+use motorsport;
 create table if not exists usuarios (
   usuario_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   nombre_usuario VARCHAR(50) NOT NULL UNIQUE,
@@ -27,5 +28,10 @@ INSERT INTO clasificacion (nombre, apellido, dorsal, puntos, escuderia, nacional
 ('Carlos', 'Sainz', 55, 64, 'Williams', 'España'),
 ('Fernando', 'Alonso', 14, 56, 'Aston Martin', 'España');
 
-INSERT INTO usuarios (nombre_usuario, contrasena, correo, creacion) VALUES 
-('admin', 'admin123', 'admin@f1.com', '2026-02-02');
+INSERT INTO usuarios (nombre_usuario, contrasena, correo, creacion)
+VALUES (
+  'admin',
+  '$2y$10$Qe6z0u1pQJqvYp8GmV7E0u6xX9kq8v1n2p3r4s5t6u7v8w9x0y1z', 
+  'admin@f1.com',
+  CURDATE()
+);
