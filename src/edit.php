@@ -27,7 +27,7 @@ if (!$piloto) {
         <label>Nombre</label>
         <input type="text" name="nombre" value="<?php echo htmlspecialchars($piloto['nombre']); ?>" required>
         <label>Apellidos</label>
-        <input type="text" name="apellidos" value="<?php echo htmlspecialchars($piloto['apellidos']); ?>" required>
+        <input type="text" name="apellido" value="<?php echo htmlspecialchars($piloto['apellido']); ?>" required>
         <label>Dorsal</label>
         <input type="number" name="dorsal" value="<?php echo (int)$piloto['dorsal']; ?>" required>
         <label>Puntos</label>

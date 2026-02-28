@@ -18,7 +18,7 @@
         <label>Correo</label>
         <input type="email" name="correo" required>
         <label>Contraseña</label>
-        <input type="password" name="contraseña" required>
+        <input type="password" name="contrasena" required>
         <button type="submit">Registrarse</button>
     </form>
     <p>¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a></p>

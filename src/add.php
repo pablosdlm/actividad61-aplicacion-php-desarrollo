@@ -16,7 +16,7 @@ require_login();
         <label>Nombre</label>
         <input type="text" name="nombre" required>
         <label>Apellidos</label>
-        <input type="text" name="apellidos" required>
+        <input type="text" name="apellido" required>
         <label>Dorsal</label>
         <input type="number" name="dorsal" required>
         <label>Puntos</label>

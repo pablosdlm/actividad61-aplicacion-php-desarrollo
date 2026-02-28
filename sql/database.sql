@@ -10,7 +10,7 @@ create table if not exists clasificacion (
   piloto_id int AUTO_INCREMENT primary key not null,
   nombre VARCHAR(100) not null,
   apellido VARCHAR(100) not null,
-  dorsal int(2) not null,
+  dorsal int(2) not null UNIQUE,
   puntos int not null,
   escuderia varchar(100) not null,
   nacionalidad varchar(100) not null

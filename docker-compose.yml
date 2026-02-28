@@ -11,7 +11,7 @@ services:
     build: ./
 # Publica el puerto 80 del contenedor como 80 en la red del host de docker    
     ports: 
-      - 8081:80
+      - 80:80
 # Establecemos una lista de variables de entorno que pueden ser utilizadas por los contenedores del servicio APACHE
 # Las variables de entorno tienen el mismo nombre que el servicio MARIADB. Se le puede poner cualquier nombre
     environment: 

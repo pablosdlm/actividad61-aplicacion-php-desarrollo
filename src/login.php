@@ -24,7 +24,7 @@ $error = isset($_GET['error']);
         <input type="email" name="correo" required>
 
         <label>Contraseña</label>
-        <input type="password" name="contraseña" required>
+        <input type="password" name="contrasena" required>
 
         <button type="submit">Entrar</button>
     </form>

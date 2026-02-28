@@ -45,7 +45,7 @@ $pilotos = $stmt->fetchAll();
         <?php foreach ($pilotos as $index => $p): ?>
             <tr>
                 <td><?php echo $index + 1; ?></td>
-                <td><?php echo htmlspecialchars($p['nombre'] . ' ' . $p['apellidos']); ?></td>
+                <td><?php echo htmlspecialchars($p['nombre'] . ' ' . $p['apellido']); ?></td>
                 <td><?php echo (int)$p['dorsal']; ?></td>
                 <td><?php echo (int)$p['puntos']; ?></td>
                 <td><?php echo htmlspecialchars($p['escuderia']); ?></td>
